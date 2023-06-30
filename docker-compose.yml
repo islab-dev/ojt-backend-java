@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+    mariadb:
+        container_name: ISLab-WebDevOJT-MariaDB
+        ports:
+            - '3306:3306'
+        restart: always
+        volumes:
+            - ./mysqldata/conf.d:/etc/mysql/conf.d
+            - ./mysqldata/data:/var/lib/mysql
+            - ./mysqldata/initdb.d:/docker-entrypoint-initdb.d
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - TZ=Asia/Seoul
+        image: mariadb
